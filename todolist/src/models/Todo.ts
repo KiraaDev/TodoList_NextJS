@@ -19,3 +19,8 @@ const TodoSchema = new Schema({
 const Todo = mongoose.models.Todo || mongoose.model<ITodo>('Todo', TodoSchema);
 
 export default Todo;
+
+export async function saveToDatabase(todo: ITodo) {
+    const savedTodo = await Todo.create(todo);
+    return savedTodo;
+}
